@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
 import { fontFamily } from 'tailwindcss/defaultTheme';
 module.exports = {
     darkMode: ["class"],
     content: [
-		'./pages//*.{js,ts,jsx,tsx,html}',
-    	'./components//*.{js,ts,jsx,tsx,html}',
-    	'./app//*.{js,ts,jsx,tsx,html}',
-		'./src//*.{js,ts,jsx,tsx,html}',
+		'./pages/**/*.{js,ts,jsx,tsx,html}',
+    	'./components/**/*.{js,ts,jsx,tsx,html}',
+    	'./app/**/*.{js,ts,jsx,tsx,html}',
+		'./src/**/*.{js,ts,jsx,tsx,html}',
 	],
 	prefix: "",
   	theme: {
@@ -27,7 +28,7 @@ module.exports = {
   		extend: {
 
 			colors: {
-			primary: "#1c1c22",
+			primary: "#000000",
 			accent: {
 				DEFAULT: "#00ff99",
 				hover: "#00e187",
@@ -47,3 +48,4 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 };
+
