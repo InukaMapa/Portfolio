@@ -22,8 +22,9 @@ const reverseIndex = (index) => {
 const Stairs = () => {
   return (
     <>
-      {[...Array(6)].map((_, index) => (
-        <motion.div
+      {[...Array(6)].map((_, index) => {
+       return(
+         <motion.div
           key={index}
           variants={stairAnimation}
           initial="initial"
@@ -36,7 +37,8 @@ const Stairs = () => {
           }}
           className="h-full w-full bg-white relative"
         />
-      ))}
+       );
+      })}
     </>
   );
 };
