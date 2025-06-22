@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import React from "react";
 
 
+
 //components
 const Header = () => {
   return (
@@ -19,7 +20,7 @@ const Header = () => {
 
         {/* dekstop nav and hire me button */}
         <div className="hidden xl:flex items-center gap-8">
-            <Nav /> 
+            <Nav/>
             <Link href="/contact">
              <Button className="bg-red-500">Hire me</Button>
             </Link>
