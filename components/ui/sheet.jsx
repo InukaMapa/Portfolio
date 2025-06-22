@@ -1,10 +1,12 @@
 "use client";
-import * as React from "react"
-import * as SheetPrimitive from "@radix-ui/react-dialog"
+import * as React from "react";
+import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
-import { X } from "lucide-react"
+import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
+import {IoMdClose } from "react-icons/io";
+
 
 const Sheet = SheetPrimitive.Root
 
@@ -21,7 +23,7 @@ const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
       className
     )}
     {...props}
-    ref={ref} />
+    ref={ref} />  
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
@@ -83,7 +85,8 @@ const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
     className={cn("text-lg font-semibold text-foreground", className)}
-    {...props} />
+    {...props} 
+    />      
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
