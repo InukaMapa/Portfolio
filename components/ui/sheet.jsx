@@ -1,12 +1,12 @@
 "use client";
-import * as React from "react";
-import * as SheetPrimitive from "@radix-ui/react-dialog";
+import * as React from "react"
+import * as SheetPrimitive from "@radix-ui/react-dialog"
 import { cva } from "class-variance-authority";
-import { X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import {IoMdClose } from "react-icons/io";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
+import {IoMdClose} from 'react-icons/io'
 
 const Sheet = SheetPrimitive.Root
 
@@ -23,7 +23,7 @@ const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
       className
     )}
     {...props}
-    ref={ref} />  
+    ref={ref} />
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
@@ -46,19 +46,32 @@ const sheetVariants = cva(
   }
 )
 
-const SheetContent = React.forwardRef(({ side = "right", className, children, ...props }, ref) => (
-  <SheetPortal>
-    <SheetOverlay />
-    <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
-      {children}
-      <SheetPrimitive.Close className="absolute right-8 top -8 transition-opacity outline-none">
-        <IoMdClose className="text-3xl text-accent" />
-        <span className="sr-only">Close</span>
-      </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </SheetPortal>
-))
-SheetContent.displayName = SheetPrimitive.Content.displayName
+const SheetContent = React.forwardRef(
+  ({ side = "right", className, children, ...props }, ref) => (
+    <SheetPortal>
+      <SheetOverlay />
+      <SheetPrimitive.Content
+        ref={ref}
+        className={cn(sheetVariants({ side }), className)}
+        {...props}
+      >
+        {/* Visually hidden title for accessibility */}
+        <VisuallyHidden>
+          <SheetTitle>Sheet Dialog</SheetTitle>
+        </VisuallyHidden>
+
+        {children}
+
+        <SheetPrimitive.Close
+          className="absolute right-8 top-8 transition-opacity outline-none">
+          <IoMdClose className="text-3xl text-accent" />
+          <span className="sr-only">Close</span>
+        </SheetPrimitive.Close>
+      </SheetPrimitive.Content>
+    </SheetPortal>
+  )
+);
+
 
 const SheetHeader = ({
   className,
@@ -84,8 +97,7 @@ const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
     className={cn("text-lg font-semibold text-foreground", className)}
-    {...props} 
-    />      
+    {...props} />
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
